@@ -42,14 +42,31 @@ globalThis.addEventListener("DOMContentLoaded", () => {
 
     image.classList.remove("prompt-animation");
   });
-});
 
-var navLinks = document.querySelectorAll("nav a");
-console.log(navLinks);
-for (var i = 0; i < navLinks.length; i++) {
-  var link = navLinks[i];
-  if (link.getAttribute("href") == window.location.pathname) {
-    link.classList.add("live");
-    break;
-  }
-}
+  const menu = document.querySelector(".menu");
+  const close = document.querySelector(".close");
+  const nav = document.querySelector("nav");
+  const navLinks = document.querySelectorAll("nav a");
+
+  menu.addEventListener("click", () => {
+    menu.classList.add("menu-hide");
+    close.classList.add("close-show");
+    nav.classList.add("nav-show");
+  });
+
+  close.addEventListener("click", () => {
+    menu.classList.remove("menu-hide");
+    close.classList.remove("close-show");
+    nav.classList.remove("nav-show");
+  });
+
+  // for when click on the link:
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("menu-hide");
+      close.classList.remove("close-show");
+      nav.classList.remove("nav-show");
+    });
+  });
+});

@@ -35,13 +35,17 @@ export class ProjectDetails extends HTMLElement {
         <h2>${project.name}</h2>
         <img style="width:100%;height:100%;  object-fit: contain;
 " src="${project.image}" alt="${project.name}" />
-        <p>Description: ${project.description}</p>
+        <p><b style="font-size:1.2rem;>Description:</b> ${
+          project.description
+        }</p>
         ${
           project.live
-            ? `<p>Live: <a href="${project.live}">${project.live}</a></p>`
+            ? `<p><b style="font-size:1.2rem;>Live:</b> <a href="${project.live}">${project.live}</a></p>`
             : ""
         }
-        <p>Github: <a href="${project.github}">${project.github}</a></p>
+        <p><b style="font-size:1.2rem;">Github:</b> <a href="${
+          project.github
+        }">${project.github}</a></p>
       `;
     } else {
       detailSection.innerHTML = `<p>project not found</p>`;

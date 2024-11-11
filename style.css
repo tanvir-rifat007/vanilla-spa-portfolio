@@ -69,7 +69,7 @@ html {
 
 body {
   font-family: "MonaspaceKrypton", sans-serif;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #333;
 
   max-width: 1376px;
@@ -103,6 +103,21 @@ nav > ul > li {
 nav > ul > li.nav-item > a {
   text-decoration: none;
   color: #000000b8;
+  font-size: 1.5rem;
+}
+
+header h1 a {
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #000000b8;
+}
+
+nav > ul > li.nav-item > a:hover,
+header h1 a:hover {
+  color: #000000;
+  transition: color 0.4s ease-in-out;
 }
 
 #about {
@@ -228,5 +243,105 @@ img {
   }
   50% {
     transform: scale(1.1);
+  }
+}
+
+.menu,
+.close {
+  display: none;
+}
+
+@media (max-width: 1040px) {
+  header {
+    justify-content: center;
+    flex-flow: column nowrap;
+  }
+  header h1 {
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* body {
+    line-height: 1.2;
+  } */
+  header {
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;
+    position: relative;
+    gap: 1rem;
+  }
+  header h1 a {
+    flex-basis: auto;
+    font-size: 1.5rem;
+    align-self: start;
+  }
+  header svg {
+    fill: var(--white);
+  }
+
+  header nav {
+    position: absolute;
+    min-height: 100vh;
+    min-width: 100vw;
+    top: 0;
+
+    left: -200%;
+    padding-top: 50%;
+    background-color: rgba(25, 1, 12, 0.6);
+    z-index: 100;
+
+    transition: left 0.3s ease-in-out;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+  header nav ul li a {
+    color: rgba(255, 255, 255, 0.888) !important;
+    font-size: 1.5rem;
+  }
+  header nav .button {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .menu {
+    display: block;
+    cursor: pointer;
+  }
+  .menu-hide {
+    display: none;
+  }
+  .close-show {
+    display: block;
+    position: absolute;
+    top: 3rem;
+    right: 1rem;
+    cursor: pointer;
+    z-index: 100;
+  }
+  .nav-show {
+    left: -10%;
+    top: -50%;
+  }
+
+  #about {
+    z-index: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 a {
+    font-size: 1.2rem;
+  }
+  header nav ul li a {
+    font-size: 1.2rem;
   }
 }

@@ -38,8 +38,7 @@ export class Projects extends HTMLElement {
 
     projects.forEach((project) => {
       const projectCard = document.createElement("div");
-      projectCard.className =
-        "project card glass glass-pane-header rainbow-mesh";
+      projectCard.className = "project card glass glass-pane-header ";
       projectCard.innerHTML = `
         <h3>${project.name}</h3>
         <img src="${project.image}" alt="${project.name}" />
