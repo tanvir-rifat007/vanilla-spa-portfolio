@@ -7,6 +7,8 @@ import STATE from "./services/state.js";
 import router from "./services/router.js";
 import { ai } from "./services/ai.js";
 
+navigator.serviceWorker.register("/sw.js");
+
 globalThis.app = {
   state: STATE,
   router,
