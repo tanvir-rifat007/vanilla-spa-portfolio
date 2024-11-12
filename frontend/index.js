@@ -1,4 +1,3 @@
-import { Projects } from "./components/projects.js";
 import { ProjectDetails } from "./components/ProjectDetails.js";
 import { Contact } from "./components/Contact.js";
 
@@ -6,6 +5,7 @@ import { fetchProjects } from "./utils/loadProjects.js";
 import STATE from "./services/state.js";
 import router from "./services/router.js";
 import { ai } from "./services/ai.js";
+import { Projects } from "./components/Project.js";
 
 navigator.serviceWorker.register("/sw.js");
 
