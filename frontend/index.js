@@ -7,7 +7,18 @@ import router from "./services/router.js";
 import { ai } from "./services/ai.js";
 import { Projects } from "./components/Project.js";
 
-navigator.serviceWorker.register("/sw.js");
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("/sw.js")
+    .then((registration) => {
+      console.log("Service Worker registered with scope:", registration.scope);
+    })
+    .catch((error) => {
+      console.error("Service Worker registration failed:", error);
+    });
+} else {
+  console.log("Service Worker is not supported in this browser.");
+}
 
 globalThis.app = {
   state: STATE,
