@@ -65,9 +65,27 @@ const feededData = {
   ],
   contactInfo: {
     email: "tanvirhassanrifat50@gmail.com",
-    location: "Bamoil,Demra-Dhaka",
+    location: "Bamoil,Demra-Dhaka,Bangladesh",
+    github: "https://github.com/tanvir-rifat007",
+    facebook: "https://www.facebook.com/tanvir.rifat.3954",
   },
+  skills: [
+    "HTMX",
+    "REACT",
+    "GOLANG",
+    "JS",
+    "AI",
+    "ML",
+    "WEB COMPONENT",
+    "DIGITAL OCEAN",
+    "DOCKER",
+    "AWS",
+  ],
 };
+
+app.get("/", async (req, res) => {
+  res.json({ message: "Hello world" });
+});
 
 app.post("/api/chat", async (req, res) => {
   const { message } = req.body;
@@ -83,9 +101,12 @@ app.post("/api/chat", async (req, res) => {
             - Role: ${userData.role}
             - Email: ${userData.contactInfo.email}
             - Location: ${userData.contactInfo.location}
+            - Github: ${userData.contactInfo.github}
+            - Facebook: ${userData.contactInfo.facebook}
             - Projects: ${userData.projects
               .map((project) => `${project.name} - ${project.description}`)
               .join(", ")}
+            - Skills: ${userData.skills.map((skill) => `${skill}`)}
             
             Visitor's message: ${message}
         `;
