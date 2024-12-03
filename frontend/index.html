@@ -5,11 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="./index.js" defer type="module"></script>
+
+    <script src="
+https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js
+"></script>
+
+    <script src="
+https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.5.4/dist/speech-commands.min.js
+"></script>
+
     <title>Portfolio Website</title>
   </head>
   <body class="glass-pane rainbow-mesh">
     <section class="header">
-      <header class="glass-pane-header rainbow-mesh">
+      <header class="glass-pane-header glass">
         <h1><a class="navlink" href="/">Tanvir Rifat</a></h1>
         <nav>
           <ul>
@@ -102,5 +111,7 @@
     <template id="contact-template">
       <section id="contact"></section>
     </template>
+
+    <div id="mode-message"></div>
   </body>
 </html>

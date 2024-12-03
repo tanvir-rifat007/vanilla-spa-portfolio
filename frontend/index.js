@@ -7,6 +7,8 @@ import router from "./services/router.js";
 import { ai } from "./services/ai.js";
 import { Projects } from "./components/Project.js";
 
+const URL = "https://teachablemachine.withgoogle.com/models/oF9z45RJn/";
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("/sw.js")
@@ -27,6 +29,8 @@ globalThis.app = {
 };
 
 globalThis.addEventListener("DOMContentLoaded", () => {
+  init();
+
   fetchProjects();
 
   app.router.init();
@@ -81,3 +85,89 @@ globalThis.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+let isDark = false;
+
+function showMessage(message) {
+  const messageContainer = document.getElementById("mode-message");
+  messageContainer.textContent = message;
+  messageContainer.classList.add("show");
+  console.log(messageContainer);
+
+  setTimeout(() => {
+    messageContainer.classList.remove("show");
+  }, 3000); // 3 seconds
+}
+
+async function startAudio() {
+  const recognizer = speechCommands.create(
+    "BROWSER_FFT",
+    undefined,
+    URL + "model.json",
+    URL + "metadata.json"
+  );
+
+  await recognizer.ensureModelLoaded();
+
+  return recognizer;
+}
+
+async function init() {
+  const recognizer = await startAudio();
+  console.log(recognizer);
+  const classLabels = recognizer.wordLabels();
+
+  recognizer.listen(
+    (result) => {
+      const { scores } = result;
+      const maxValue = Math.max(...scores);
+      const index = scores.indexOf(maxValue);
+      const label = classLabels[index];
+
+      console.log(label);
+
+      if (label === "singleClap" && !isDark) {
+        document.documentElement.classList.add("dark");
+
+        isDark = true;
+        showMessage("You are in dark mode");
+
+        return;
+      }
+      if (label === "singleClap" && isDark) {
+        document.documentElement.classList.remove("dark");
+        isDark = false;
+        showMessage("You are in light mode");
+
+        return;
+      }
+
+      if (label === "doubleClap") {
+        const aboutContent = document.querySelector(".about-content");
+        const image = document.querySelector(".flip-trigger");
+
+        // Trigger flip animation
+        if (aboutContent.classList.contains("hidden")) {
+          aboutContent.classList.remove("hidden", "hidden-back");
+
+          setTimeout(() => {
+            aboutContent.classList.add("flipping");
+          }, 10);
+        } else {
+          aboutContent.classList.remove("flipping");
+          aboutContent.classList.add("hidden-back");
+
+          setTimeout(() => {
+            aboutContent.classList.add("hidden");
+          }, 600);
+        }
+      }
+    },
+    {
+      includeSpectrogram: true,
+      probabilityThreshold: 0.85,
+      invokeCallbackOnNoiseAndUnknown: true,
+      overlapFactor: 0.5,
+    }
+  );
+}

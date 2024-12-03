@@ -27,7 +27,7 @@
     {
       "id": 4,
       "name": "Soroborno Likhi",
-      "description": "Developed a full-featured blogging platform with a React.js frontend and a Node.js backend. Implemented user authentication, CRUD operations, and a responsive design.",
+      "description": "Developed a machine learning model to detect soroborno and print it to the canvas using TensorFlow.js.",
       "image": "./images/projects/soroborno.png",
       "live": "https://soroborno-likhi-h2va-ja7x59q9g-tanvir-rifats-projects.vercel.app/",
       "github": "https://github.com/tanvir-rifat007/soroborno-likhi"

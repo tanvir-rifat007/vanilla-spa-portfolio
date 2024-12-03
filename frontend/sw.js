@@ -21,6 +21,9 @@ self.addEventListener("install", async (event) => {
     "/images/projects/soroborno.png",
     "/images/projects/codeClips.png",
     "/images/projects/syshealth.png",
+    "https://teachablemachine.withgoogle.com/models/oF9z45RJn/",
+    "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js",
+    "https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands@0.5.4/dist/speech-commands.min.js",
   ];
   const cache = await caches.open("ai-portfolio");
   cache.addAll(assets);

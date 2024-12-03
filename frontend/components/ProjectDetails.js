@@ -28,21 +28,24 @@ export class ProjectDetails extends HTMLElement {
 
     if (project) {
       detailSection.innerHTML = `
-        <button onclick="app.router.navigate('/')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button class="glass glass-pane-header" onclick="app.router.navigate('/')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <polyline points="15 18 9 12 15 6"></polyline>
 </svg>
 </button>
         <h2>${project.name}</h2>
         <img style="width:100%;height:100%;  object-fit: contain;
 " src="${project.image}" alt="${project.name}" />
-        <p><b style="font-size:1.2rem;>Description:</b> ${
+
+        <p><span style="font-size:1.2rem; font-weight:bold;">Description: </span>${
           project.description
-        }</p>
+        }.</p>
+
         ${
           project.live
-            ? `<p><b style="font-size:1.2rem;>Live:</b> <a href="${project.live}">${project.live}</a></p>`
+            ? `<p><span style="font-size:1.2rem; font-weight:bold;">Live:</span> <a href="${project.live}">${project.live}</a></p>`
             : ""
         }
+        
         <p><b style="font-size:1.2rem;">Github:</b> <a href="${
           project.github
         }">${project.github}</a></p>

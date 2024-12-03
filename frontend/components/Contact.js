@@ -24,12 +24,12 @@ export class Contact extends HTMLElement {
     const contactSection = this.root.querySelector("#contact");
 
     contactSection.innerHTML = `
-      <button onclick="app.router.navigate('/')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="glass glass-pane-header" onclick="app.router.navigate('/')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg></button>
       <section class="form">
-        <textarea id="user-input" placeholder="Enter Your chat about me and my project..."></textarea>
-        <button onclick="app.ai()" id="send-btn" class="glass">Chat about me and my project</button>
+        <textarea class="glass glass-pane-header" style="max-width:50%;" id="user-input" placeholder="Enter Your chat about me and my project..."></textarea>
+        <button class="glass glass-pane-header" style="font-size:1rem;"  onclick="app.ai()" id="send-btn" class="glass">Chat about me with AI</button>
       </section>
       <div id="chat-messages"></div>
     `;

@@ -70,7 +70,7 @@ html {
 body {
   font-family: "MonaspaceKrypton", sans-serif;
   line-height: 1.5;
-  color: #333;
+  color: #000000b8;
 
   max-width: 1376px;
   margin: 0 auto;
@@ -129,46 +129,36 @@ header h1 a:hover {
 }
 
 .rainbow-mesh {
-  background-color: hsla(200, 100%, 85%, 1); /* Soft base background color */
+  background-color: #0b1d3a;
   background-image: radial-gradient(
-      circle at 25% 15%,
-      hsla(28, 100%, 80%, 0.8) 0%,
-      /* Soft peach */ transparent 70%
+      circle at 20% 20%,
+      rgba(41, 88, 173, 0.7) 0%,
+      transparent 60%
     ),
     radial-gradient(
-      circle at 65% 20%,
-      hsla(189, 100%, 65%, 0.75) 0%,
-      /* Sky blue */ transparent 60%
+      circle at 80% 30%,
+      rgba(93, 155, 236, 0.6) 0%,
+      transparent 70%
     ),
     radial-gradient(
-      circle at 15% 55%,
-      hsla(355, 100%, 90%, 0.8) 0%,
-      /* Light pink */ transparent 60%
+      circle at 40% 70%,
+      rgba(33, 110, 203, 0.5) 0%,
+      transparent 60%
     ),
     radial-gradient(
-      circle at 75% 40%,
-      hsla(340, 100%, 75%, 0.75) 0%,
-      /* Rose */ transparent 65%
+      circle at 60% 90%,
+      rgba(20, 53, 120, 0.4) 0%,
+      transparent 80%
     ),
     radial-gradient(
       circle at 25% 75%,
-      hsla(22, 100%, 78%, 0.7) 0%,
-      /* Light orange */ transparent 65%
+      rgba(52, 95, 182, 0.5) 0%,
+      transparent 65%
     ),
     radial-gradient(
-      circle at 55% 85%,
-      hsla(242, 100%, 75%, 0.75) 0%,
-      /* Soft lavender */ transparent 65%
-    ),
-    radial-gradient(
-      circle at 10% 10%,
-      hsla(343, 100%, 78%, 0.7) 0%,
-      /* Light magenta */ transparent 70%
-    ),
-    radial-gradient(
-      circle at 85% 85%,
-      hsla(50, 100%, 65%, 0.6) 0%,
-      /* Soft yellow */ transparent 75%
+      circle at 70% 60%,
+      rgba(80, 140, 220, 0.7) 0%,
+      transparent 70%
     );
 }
 
@@ -292,9 +282,10 @@ img {
     left: -200%;
     padding-top: 50%;
     background-color: rgba(25, 1, 12, 0.6);
-    z-index: 100;
 
     transition: left 0.3s ease-in-out;
+
+    z-index: 100;
   }
 
   header nav ul {
@@ -325,7 +316,8 @@ img {
     top: 3rem;
     right: 1rem;
     cursor: pointer;
-    z-index: 100;
+
+    z-index: 1000;
   }
   .nav-show {
     left: -10%;
@@ -333,7 +325,16 @@ img {
   }
 
   #about {
-    z-index: -1;
+    z-index: -100;
+    flex-direction: column;
+  }
+
+  .about-content.flipping {
+    width: 100%;
+    display: block !important;
+  }
+  .image-wrapper img {
+    width: 100%;
   }
 }
 
@@ -344,4 +345,56 @@ img {
   header nav ul li a {
     font-size: 1.2rem;
   }
+}
+
+.dark {
+  background-color: #020912;
+  background-image: radial-gradient(
+      circle at 20% 20%,
+      rgba(20, 53, 120, 0.7) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(41, 88, 173, 0.6) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 40% 70%,
+      rgba(33, 80, 150, 0.5) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 60% 90%,
+      rgba(10, 35, 80, 0.4) 0%,
+      transparent 80%
+    ),
+    radial-gradient(
+      circle at 25% 75%,
+      rgba(30, 70, 120, 0.5) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(50, 100, 180, 0.7) 0%,
+      transparent 70%
+    );
+}
+
+#mode-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#mode-message.show {
+  opacity: 1;
 }
